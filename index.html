@@ -4,11 +4,64 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Acumen Desktop</title>
+	<style>
+		html,
+		body {
+			height: 100%;
+			width: 100%;
+			margin: 0;
+		}
+
+		body {
+			background-color: #121212;
+			box-sizing: border-box;
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		header {
+			padding: 1rem;
+		}
+
+		main {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			padding: 1rem;
+		}
+
+		footer {
+			padding: 1rem;
+		}
+	</style>
+	<link rel="stylesheet" media="(prefers-color-scheme:light)"
+		href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/light.css" />
+	<link rel="stylesheet" media="(prefers-color-scheme:dark)"
+		href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css"
+		onload="document.documentElement.classList.add('sl-theme-dark');" />
+	<!-- https://shoelace.style/ -->
+
+	<script type="module"
+		src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/shoelace-autoloader.js"></script>
+
+	<title>Acumen Desktop Software Canada Inc.</title>
 </head>
 
 <body>
-	<h1>Hello World!</h1>
+	<header>
+		<h1>Acumen Desktop Software Canada Inc.</h1>
+	</header>
+	<main>
+		<!-- <sl-button size="small">Click me</sl-button> -->
+	</main>
+	<footer>
+		<p>Copyright © 2024 Acumen Desktop Software Canada Inc. (Federally Incorporated)</p>
+	</footer>
+
 </body>
 
 </html>
