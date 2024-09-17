@@ -38,7 +38,7 @@
 			align-items: center;
 			justify-content: center;
 			padding: 1rem;
-			max-height: 50%;
+			max-height: 60%;
 			width: 50%;
 		}
 
@@ -48,7 +48,77 @@
 		}
 
 		footer {
+			width: 100%;
 			padding: 1rem;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		.footerRow {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-around;
+			flex-wrap: wrap;
+		}
+
+		#toggleButton {
+			position: fixed;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			background-color: #007bff;
+			color: white;
+			font-size: 42px;
+			font-weight: bold;
+			border: none;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: -2px -2px 5px rgba(255,255,255,0.1), 2px 2px 5px rgba(0,0,0,0.1);
+			transition: all 0.2s ease;
+			text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+		}
+
+		#toggleButton:hover {
+			background-color: #0056b3;
+			box-shadow: -3px -3px 7px rgba(255,255,255,0.15), 3px 3px 7px rgba(0,0,0,0.15);
+		}
+
+		#toggleButton:active {
+			box-shadow: -1px -1px 3px rgba(255,255,255,0.1), 1px 1px 3px rgba(0,0,0,0.1);
+			transform: translateY(-50%) scale(0.98);
+		}
+
+		#videoIframe {
+			display: none;
+		}
+
+		.social-button {
+			display: inline-flex;
+			align-items: center;
+			color: white;
+			padding: 10px 15px;
+			border-radius: 4px;
+			text-decoration: none;
+			font-weight: bold;
+			margin: 10px 5px;
+			transition: background-color 0.3s ease;
+			background-color: #0077B5;
+		}
+		.social-button:hover {
+			background-color: #005fa3;
+		}
+
+		.social-button svg {
+			width: 20px;
+			height: 20px;
+			margin-right: 8px;
 		}
 	</style>
 	<!-- <link rel="stylesheet" href="global.css" /> -->
@@ -69,18 +139,65 @@
 <body>
 	<header>
 		<h1>Acumen Desktop Software</h1>
+		<h1 style="text-align: center;">Coming Soon! 🙏🏼</h1>
+
 		<!-- <h3>A shareable, comprehensive, "Application Platform"</h3> -->
 	</header>
 	<main>
-		<!-- Add SVG image here -->
-		<!-- <img class="opacity0" src="img/reshot-icon-globe-in-hand.svg" alt="Globe in Hand Icon"> -->
-
+		<iframe id="videoIframe" width="316" height="600" src="https://www.youtube.com/embed/undy3sy4qbw?si=wMoojGZ93ST569fE&enablejsapi=1" title="YouTube video player" frameborder="1" allow="autoplay" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 	</main>
 	<footer>
-		<h1 style="text-align: center;">Coming Soon!</h1>
-		<p>Copyright © 2024 - Acumen Desktop Software </p>
+		<div class="footerRow">
+			<a href="https://www.linkedin.com/in/jamesswansburg/" target="_blank" rel="noopener noreferrer" class="social-button">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+				</svg>
+				Connect on LinkedIn
+			</a>
+			<p>Copyright © 2024 - Made in Canada 🇨🇦</p>
+			<a href="https://x.com/acumendesktop" target="_blank" rel="noopener noreferrer" class="social-button">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+				</svg>
+				Follow on X
+			</a>
+		</div>
 	</footer>
 
+	<button id="toggleButton">?</button>
+
+	<script>
+		const toggleButton = document.getElementById('toggleButton');
+		const videoIframe = document.getElementById('videoIframe');
+		let player;
+
+		// Load the YouTube API
+		const tag = document.createElement('script');
+		tag.src = "https://www.youtube.com/iframe_api";
+		const firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+		// This function creates an <iframe> (and YouTube player) after the API code downloads
+		function onYouTubeIframeAPIReady() {
+			player = new YT.Player('videoIframe', {
+				events: {
+					'onReady': onPlayerReady
+				}
+			});
+		}
+
+		function onPlayerReady(event) {
+			toggleButton.addEventListener('click', () => {
+				if (videoIframe.style.display === 'none' || videoIframe.style.display === '') {
+					videoIframe.style.display = 'block';
+					player.playVideo();
+				} else {
+					videoIframe.style.display = 'none';
+					player.pauseVideo();
+				}
+			});
+		}
+	</script>
 </body>
 
 </html>
