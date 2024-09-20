@@ -9,6 +9,8 @@ thinker by Berkah Icon from <a href="https://thenounproject.com/browse/icons/ter
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<!-- Element Styles -->
 	<style>
 		html,
 		body {
@@ -55,34 +57,30 @@ thinker by Berkah Icon from <a href="https://thenounproject.com/browse/icons/ter
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			padding: 1rem;
+			padding: 4rem;
 			box-sizing: border-box;
 		}
+
 		a {
 			color: white;
 		}
-		.copyrightColumn {
-            display: flex;
-            flex-direction: column;
-        }
-
-		.video-container {
-			position: relative;
-			width: 100%;
-			max-width: 51vh; /* 9:16 aspect ratio */
-			max-height: 90vh;
-			aspect-ratio: 9 / 16;
-			z-index: 30; /* Increase z-index to be above header and footer */
+		button {
+			color: white;
+			border: 2px solid #ffffff;
+			border-radius: 5px;
+			padding: 10px 20px;
+			font-size: 16px;
+			cursor: pointer;
+			transition: all 0.3s ease;
 		}
 
-		#videoIframe {
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			display: none;
+		button:hover {
+			background-color: #ffffff;
 		}
+
+		button svg {
+        pointer-events: none;
+    }
 
 		footer {
 			padding: 1rem;
@@ -92,6 +90,41 @@ thinker by Berkah Icon from <a href="https://thenounproject.com/browse/icons/ter
 			right: 0;
 			z-index: 10;
 		}
+
+		@media (max-width: 768px) {
+			header {
+				font-size: 0.8em;
+				margin-top: 1em;
+			}
+
+			footer {
+				font-size: 0.8em;
+			}
+
+			.social-button {
+				padding: 5px 10px;
+			}
+		}
+	</style>
+
+	<!-- Class Styles -->
+	<style>
+		
+		.copyrightColumn {
+            display: flex;
+            flex-direction: column;
+        }
+
+		.video-container {
+			position: relative;
+			width: 100%;
+			max-width: 45vh; /* 9:16 aspect ratio */
+			max-height: 80vh;
+			aspect-ratio: 9 / 16;
+			z-index: 30; /* Increase z-index to be above header and footer */
+		}
+
+
 
 		.emoji {
 			font-size: 1.5em;
@@ -107,56 +140,7 @@ thinker by Berkah Icon from <a href="https://thenounproject.com/browse/icons/ter
 			flex-wrap: wrap;
 		}
 
-		#toggleButton {
-			position: fixed;
-			right: 20px;
-			top: 50%;
-			transform: translateY(-50%);
-			width: 60px;
-			height: 60px;
-			border-radius: 50%;
-			background-color: #007bff;
-			color: white;
-			font-size: 42px;
-			font-weight: bold;
-			border: none;
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			box-shadow: -2px -2px 5px rgba(255,255,255,0.1), 2px 2px 5px rgba(0,0,0,0.1);
-			transition: all 0.2s ease;
-			text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-			z-index: 40; /* Increased to be above video-container */
-		}
 
-		#toggleButton:hover {
-			background-color: #0056b3;
-			box-shadow: -3px -3px 7px rgba(255,255,255,0.15), 3px 3px 7px rgba(0,0,0,0.15);
-		}
-
-		#toggleButton:active {
-			box-shadow: -1px -1px 3px rgba(255,255,255,0.1), 1px 1px 3px rgba(0,0,0,0.1);
-			transform: translateY(-50%) scale(0.98);
-		}
-
-		#toggleButton .icon {
-			position: absolute;
-			transition: opacity 0.3s ease;
-		}
-
-		#toggleButton .icon-x {
-			color: red;
-			opacity: 0;
-		}
-
-		#toggleButton.active .icon-question {
-			opacity: 0;
-		}
-
-		#toggleButton.active .icon-x {
-			opacity: 1;
-		}
 
 		.social-button {
 			display: inline-flex;
@@ -203,6 +187,68 @@ thinker by Berkah Icon from <a href="https://thenounproject.com/browse/icons/ter
 			.social-button {
 				padding: 5px 10px;
 			}
+		}
+	</style>
+
+	<!-- Id Styles -->
+	 <style>
+			#videoIframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: none;
+		}
+	 </style>
+
+	<!-- Toggle Button Styles -->
+	 <style>
+		#toggleButton {
+			position: fixed;
+			right: 20px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 120px;
+			height: 130px;
+			background-color: #007bff;
+			font-size: 42px;
+			font-weight: bold;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			z-index: 40; /* Increased to be above video-container */
+		}
+
+		#toggleButton:hover {
+			background-color: #0056b3;
+			box-shadow: -3px -3px 7px rgba(255,255,255,0.15), 3px 3px 7px rgba(0,0,0,0.15);
+		}
+
+		#toggleButton:active {
+			box-shadow: -1px -1px 3px rgba(255,255,255,0.1), 1px 1px 3px rgba(0,0,0,0.1);
+			transform: translateY(-50%) scale(0.98);
+		}
+
+		#toggleButton .icon {
+			position: absolute;
+			transition: opacity 0.3s ease;
+		}
+
+		#toggleButton .icon-x {
+			color: red;
+			opacity: 0;
+		}
+
+		#toggleButton.active .icon-question {
+			opacity: 0;
+		}
+
+		#toggleButton.active .icon-x {
+			opacity: 1;
+		}
+		@media (max-width: 768px) {
+			
 
 			#toggleButton {
 				top: auto;
@@ -218,7 +264,39 @@ thinker by Berkah Icon from <a href="https://thenounproject.com/browse/icons/ter
 				transform: scale(0.98);
 			}
 		}
+	 </style>
+
+	<!-- Dialog Styles -->
+	<style>
+
+		dialog {
+			padding: 20px;
+			background: #fefefe;
+			color: #333;
+			max-width: 500px;
+			border-radius: 5px;
+			border: 1px solid #888;
+		}
+
+		dialog::backdrop {
+			background-color: rgba(0, 0, 0, 0.4);
+		}
+
+		#closeDialog {
+			margin-top: 15px;
+			padding: 5px 10px;
+			background-color: #007bff;
+			color: white;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		#closeDialog:hover {
+			background-color: #0056b3;
+		}
 	</style>
+
 	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.16.0/cdn/themes/dark.css" /> -->
 	<title>Acumen Desktop Software Canada Inc.</title>
 </head>
@@ -235,19 +313,27 @@ thinker by Berkah Icon from <a href="https://thenounproject.com/browse/icons/ter
 	</main>
 	<footer>
 		<div class="footerRow">
-			<a href="https://www.linkedin.com/in/jamesswansburg/" target="_blank" rel="noopener noreferrer" class="social-button">
+			<button onclick="window.open('https://www.linkedin.com/in/jamesswansburg/', '_blank')" class="social-button">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
 					<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
 				</svg>
-				Connect on LinkedIn
-			</a>
+				LinkedIn
+			</button>
 			
-			<a href="https://x.com/acumendesktop" target="_blank" rel="noopener noreferrer" class="social-button">
+			<button onclick="window.open('https://x.com/acumendesktop', '_blank')" class="social-button">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
 					<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
 				</svg>
-				Follow on X
-			</a>
+				Follow
+			</button>
+	
+			<button id="contactButton" class="social-button">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+					<path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+				</svg>
+				Contact
+			</button>
+	
 			<div class="copyrightColumn">
 				<span>Webpage © 2024 - Made in Canada  <span class="emoji">🇨🇦</span> </span>
 				<span> Video © <a href="https://www.youtube.com/@morning-brew" target="_blank">@morning-brew </a> <span class="emoji">☕️ </span> </span>
@@ -255,10 +341,47 @@ thinker by Berkah Icon from <a href="https://thenounproject.com/browse/icons/ter
 		</div>
 	</footer>
 
+	<!-- Call To Action Button -->
 	<button id="toggleButton">
 		<span class="icon icon-question">?</span>
+		<span class="icon icon-idea" style="padding-top: 10px;"><img src="img/idea_icon_120_w.png"/></span>
 		<span class="icon icon-x">X</span>
 	</button>
+
+	<!-- Dialog -->
+<dialog id="contactDialog">
+    <h2>Contact Us</h2>
+	<h3>Acumen Desktop Software Canada Inc.</h3>
+	<p>GST: 716834759RC0001</p>
+    <p><a style="color:black" href="mailto:info@acumen-desktop.com">info@acumen-desktop.com</a></p>
+    <!-- <p>Phone: +1 (123) 456-7890</p> -->
+    <address>#102 11120 68 Ave NW,<br>Edmonton, AB <br>T6H 2C2 Canada</address>
+    <button id="closeDialog">Close</button>
+</dialog>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const toggleButton = document.getElementById('toggleButton');
+			const iconQuestion = toggleButton.querySelector('.icon-question');
+			const iconIdea = toggleButton.querySelector('.icon-idea');
+
+			function updateButtonIcon() {
+				if (window.innerWidth <= 768) {
+					iconQuestion.style.display = 'block';
+					iconIdea.style.display = 'none';
+				} else {
+					iconQuestion.style.display = 'none';
+					iconIdea.style.display = 'block';
+				}
+			}
+
+			// Initial check
+			updateButtonIcon();
+
+			// Update on resize
+			window.addEventListener('resize', updateButtonIcon);
+		});
+	</script>
 
 	<script>
 		const toggleButton = document.getElementById('toggleButton');
@@ -293,6 +416,32 @@ thinker by Berkah Icon from <a href="https://thenounproject.com/browse/icons/ter
 			});
 		}
 	</script>
+
+<script>
+    const contactButton = document.getElementById('contactButton');
+    const contactDialog = document.getElementById('contactDialog');
+    const closeDialog = document.getElementById('closeDialog');
+
+    contactButton.addEventListener('click', () => {
+        contactDialog.showModal();
+    });
+
+    closeDialog.addEventListener('click', () => {
+        contactDialog.close();
+    });
+
+    contactDialog.addEventListener('click', (e) => {
+        const dialogDimensions = contactDialog.getBoundingClientRect();
+        if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+        ) {
+            contactDialog.close();
+        }
+    });
+</script>
 </body>
 
 </html>
